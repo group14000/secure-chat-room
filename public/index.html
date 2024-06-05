@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Chat Room</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input,
+        button {
+            width: 100%;
+            padding: 10px;
+        }
+
+        .chat {
+            display: none;
+        }
+
+        .chat-messages {
+            height: 300px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Secure Chat Room</h1>
+
+        <div id="registration">
+            <h2>Register</h2>
+            <div class="form-group">
+                <label for="regUserId">User ID</label>
+                <input type="text" id="regUserId" required>
+            </div>
+            <div class="form-group">
+                <label for="regDeviceId">Device ID</label>
+                <input type="text" id="regDeviceId" required>
+            </div>
+            <div class="form-group">
+                <label for="regName">Full Name</label>
+                <input type="text" id="regName" required>
+            </div>
+            <div class="form-group">
+                <label for="regPhone">Phone</label>
+                <input type="text" id="regPhone" required>
+            </div>
+            <div class="form-group">
+                <label for="regAvailCoins">Available Coins</label>
+                <input type="number" id="regAvailCoins" required>
+            </div>
+            <div class="form-group">
+                <label for="regPassword">Password</label>
+                <input type="password" id="regPassword" required>
+            </div>
+            <button onclick="register()">Register</button>
+        </div>
+
+        <div id="login">
+            <h2>Login</h2>
+            <div class="form-group">
+                <label for="loginPhone">Phone</label>
+                <input type="text" id="loginPhone" required>
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" required>
+            </div>
+            <button onclick="login()">Login</button>
+        </div>
+
+        <div id="chat" class="chat">
+            <h2>Chat Room</h2>
+            <div class="form-group">
+                <label for="roomId">Room ID</label>
+                <input type="text" id="roomId" required>
+            </div>
+            <div class="form-group">
+                <label for="roomPassword">Room Password</label>
+                <input type="password" id="roomPassword" required>
+            </div>
+            <button onclick="joinRoom()">Join Room</button>
+
+            <div class="chat-messages" id="chatMessages"></div>
+            <div class="form-group">
+                <input type="text" id="messageInput" placeholder="Type a message">
+            </div>
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
